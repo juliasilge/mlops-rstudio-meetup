@@ -1,0 +1,39 @@
+project:
+  type: website
+
+website:
+  title: "MLOps with vetiver 🏺 in Python and R"
+  search: false
+  navbar:
+    background: "#663171"
+    pinned: true
+    right:
+      - href: index.qmd
+        text: Home
+      - href: presentation/index.qmd
+        text: Slides
+      - text: Demos
+        menu:
+          - href: demos/scooby_do_python.qmd
+            text: "Python"
+          - href: demos/scooby_do_rstats.qmd
+            text: "R"
+      - icon: github
+        href: "https://github.com/juliasilge/mlops-rstudio-meetup"
+        aria-label: GitHub
+
+  page-footer:
+    left: |
+      Content {{< fa brands creative-commons >}} 2022 by [Julia Silge](https://juliasilge.com/) and [Isabel Zimmerman](https://isabelizimm.github.io/)<br>
+      All content licensed under a {{< fa brands creative-commons >}}
+      {{< fa brands creative-commons-by >}} {{< fa brands creative-commons-nc >}}
+      [Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/)
+    right: |
+      Made with [Quarto](https://quarto.org/)<br>
+      [View the source at {{< fa brands github >}} GitHub](https://github.com/juliasilge/mlops-rstudio-meetup)
+
+format:
+  html:
+    theme: pulse
+    css: styles.css
+    toc: false
