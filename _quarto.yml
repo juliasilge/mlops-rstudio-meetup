@@ -5,18 +5,17 @@ website:
   title: "MLOps with vetiver 🏺 in Python and R"
   search: false
   navbar:
-    background: "#663171"
     pinned: true
     right:
       - href: index.qmd
         text: Home
-      - href: presentation/index.qmd
+      - href: slides/index.qmd
         text: Slides
       - text: Demos
         menu:
-          - href: demos/scooby_do_python.qmd
+          - href: demos/scooby-doo-python.qmd
             text: "Python"
-          - href: demos/scooby_do_rstats.qmd
+          - href: demos/scooby-doo-rstats.qmd
             text: "R"
       - icon: github
         href: "https://github.com/juliasilge/mlops-rstudio-meetup"
@@ -34,6 +33,7 @@ website:
 
 format:
   html:
-    theme: pulse
-    css: styles.css
+    theme:
+      - zephyr
+      - styles.css
     toc: false
