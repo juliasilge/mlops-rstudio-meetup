@@ -1,6 +1,6 @@
 ---
 title: "Get started with MLOps and vetiver at the RStudio Enterprise Meetup"
-author: "Julia Silge and Isabel Zimmerman"
+author: "Julia Silge & Isabel Zimmerman"
 date: "20 September 2022"
 ---
 
@@ -14,7 +14,7 @@ Many data scientists understand what goes into training a machine learning model
 <p class="text-center"><a class="btn btn-success btn-lg" target="_blank" href="presentation/">{{< fa arrow-up-right-from-square >}} &ensp;View slides in new window</a> <a class="btn btn-success btn-lg" target="_blank" href="presentation/slides.pdf" role="button">{{< fa file-pdf >}} &ensp;Download PDF of all slides</a></p>
 
 <div class="ratio ratio-16x9">
-<iframe class="slide-deck" src="presentation/"></iframe>
+<iframe class="slide-deck" src="slides/"></iframe>
 </div>
 
 ## Speaker bios
