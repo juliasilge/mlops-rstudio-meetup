@@ -1,8 +1,12 @@
 # MLOps with vetiver 🏺 in Python and R
 
 **Julia Silge** and **Isabel Zimmerman**  
+
 RStudio PBC
+
 20 September 2022
+
+![Scooby Doo](https://media.giphy.com/media/l4pTp3Q5CWgvgy0ZG/giphy.gif)
 
 ## Materials
 
