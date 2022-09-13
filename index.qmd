@@ -1,5 +1,5 @@
 ---
-title: "MLOps with vetiver 🏺 in Python and R"
+title: "Get started with MLOps and vetiver at the RStudio Enterprise Meetup"
 author: "Julia Silge and Isabel Zimmerman"
 date: "20 September 2022"
 ---
