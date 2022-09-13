@@ -1,0 +1,95 @@
+---
+title: "MLOps with vetiver 🏺 in Python and R"
+subtitle: "RStudio Enterprise Meetup"
+author: "Julia Silge & Isabel Zimmerman"
+date: "September 20, 2022"
+format:
+  revealjs: 
+    preview-links: auto
+    theme: [simple]
+    title-slide-attributes:
+      data-background-color: "#455469"
+---
+
+## Who are we?
+
+. . .
+
+::: columns
+::: {.column width="50%"}
+<center>
+
+<img src="https://github.com/isabelizimm.png" style="border-radius: 50%;" width="300px"/>
+
+[{{< fa brands github >}} \@isabelizimm](https://github.com/isabelizimm)
+
+[{{< fa brands twitter >}} \@isabelizimm](https://twitter.com/isabelizimm)
+
+[{{< fa link >}} isabelizimm.github.io](https://isabelizimm.github.io/)
+
+</center>
+:::
+
+::: {.column width="50%"}
+<center>
+
+<img src="https://github.com/juliasilge.png" style="border-radius: 50%;" width="300px"/>
+
+[{{< fa brands github >}} \@juliasilge](https://github.com/juliasilge)
+
+[{{< fa brands twitter >}} \@juliasilge](https://twitter.com/juliasilge)
+
+[{{< fa link >}} juliasilge.com](https://juliasilge.com/)
+
+</center>
+:::
+:::
+
+## Who are you?
+
+## Who are you?  {background-image="https://media.giphy.com/media/UoYqxidgzAGygqo1Q2/giphy.gif" background-size="50%"}
+
+# If you develop a model...
+
+. . .
+
+you can operationalize that model!
+
+# If you develop a model...
+
+. . .
+
+you likely _should_ operationalize that model!
+
+
+# What is MLOps?
+
+## MLOps is
+
+. . .
+
+a set of <u>practices</u> to *deploy* and *maintain* machine learning models in production **reliably** and **efficiently**
+
+## 
+
+##  {background-image="https://media.giphy.com/media/2tM7vca4Dqk4mGKyl5/giphy.gif" background-size="70%"}
+
+##  {background-image="https://media.giphy.com/media/3ohs4CFLK53EJYWJPy/giphy.gif" background-size="70%"}
+
+##  {background-image="https://media.giphy.com/media/xThtalGAc8K7LzEThS/giphy.gif" background-size="70%"}
+
+# Next steps
+
+## Learn more
+
+::: incremental
+
+-   Documentation at <https://vetiver.rstudio.com/>
+
+-   Isabel's talk from rstudio::conf() 2022 on [Demystifying MLOps](https://www.rstudio.com/conference/2022/talks/demystifying-mlops/) 🍪
+
+-   Julia's recent screencast on [deploying a model with Docker](https://youtu.be/5s7fI4cl2C8)
+
+-   End-to-end demos from RStudio Solution Engineering in [R](https://github.com/sol-eng/bike_predict) and [Python](https://github.com/sol-eng/bike_predict_python)
+
+:::

@@ -5,6 +5,7 @@ website:
   title: "MLOps with vetiver 🏺 in Python and R"
   search: false
   navbar:
+    background: "#455469"
     pinned: true
     right:
       - href: index.qmd
