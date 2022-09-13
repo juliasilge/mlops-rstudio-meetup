@@ -1,0 +1,29 @@
+---
+title: "Version, deploy, and monitor your model with vetiver in Python"
+---
+
+## The MLOps cycle
+
+![MLOps cycle](https://vetiver.rstudio.com/images/ml_ops_cycle.png)
+
+Data scientists have effective tools that they ❤️ to:
+
+-   collect data
+
+-   prepare, manipulate, refine data
+
+-   train models
+
+There is a lack 😩 of effective tools (especially open source) to:
+
+-   put models into production
+
+-   monitor model performance
+
+-   trigger retraining
+
+## What is vetiver? <https://vetiver.rstudio.com/>
+
+> *Vetiver, the oil of tranquility, is used as a stabilizing ingredient in perfumery to preserve more volatile fragrances.*
+
+The **goal** of vetiver is to provide fluent tooling to **version, deploy, and monitor** a trained model.
