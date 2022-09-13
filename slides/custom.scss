@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Roboto+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+/*-- scss:defaults --*/
+
+$link-color: lighten(#455469, 15%);
+$presentation-heading-color: #455469;
+$font-family-sans-serif: 'Nunito', sans-serif;
+$presentation-heading-font: 'Nunito', sans-serif;
+$font-family-monospace: 'Roboto Mono', monospace;
+
+/*-- scss:rules --*/
+
+.white h1 {
+  color: #ffffff !important;
+}
+
+.middle h2 {
+  text-align: center !important;
+}

@@ -6,7 +6,7 @@ date: "September 20, 2022"
 format:
   revealjs: 
     preview-links: auto
-    theme: [simple]
+    theme: [simple, custom.scss]
     title-slide-attributes:
       data-background-color: "#455469"
 ---
@@ -64,19 +64,45 @@ you likely _should_ operationalize that model!
 
 # What is MLOps?
 
-## MLOps is
+## MLOps is...
+
+. . .
+
+![](https://46eybw2v1nh52oe80d3bi91u-wpengine.netdna-ssl.com/wp-content/uploads/2021/12/Data-and-AI-Landscape-2021-v3-small-1024x530.jpg){fig-align="center"}
+
+
+## MLOps is...
 
 . . .
 
 a set of <u>practices</u> to *deploy* and *maintain* machine learning models in production **reliably** and **efficiently**
 
-## 
+## MLOps is...
+
+. . .
+
+```{mermaid}
+%%| fig-width: 10
+flowchart LR
+  A(Version) --> B(Deploy)
+  B --> C(Monitor)
+```
+
+##  
+
+![](https://vetiver.rstudio.com/images/ml_ops_cycle.png){fig-align="center"}
 
 ##  {background-image="https://media.giphy.com/media/2tM7vca4Dqk4mGKyl5/giphy.gif" background-size="70%"}
 
 ##  {background-image="https://media.giphy.com/media/3ohs4CFLK53EJYWJPy/giphy.gif" background-size="70%"}
 
 ##  {background-image="https://media.giphy.com/media/xThtalGAc8K7LzEThS/giphy.gif" background-size="70%"}
+
+# DEMO {background-color="#455469" .white}
+
+## MLOps is...
+
+a set of <u>practices</u> to *deploy* and *maintain* machine learning models in production **reliably** and **efficiently**
 
 # Next steps
 
