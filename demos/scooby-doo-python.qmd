@@ -31,3 +31,135 @@ The **goal** of vetiver is to provide fluent tooling to **version, deploy, and m
 ## Build a model
 
 Let's build a model to predict which [Scooby Doo episodes](https://github.com/rfordatascience/tidytuesday/blob/master/data/2021/2021-07-13/readme.md) have a _real_ monster and which have a _fake_ monster.
+
+
+
+```{python}
+import os
+from dotenv import load_dotenv, find_dotenv
+load_dotenv(find_dotenv())
+
+api_key = os.getenv("API_KEY")
+rsc_url = os.getenv("RSC_URL")
+```
+
+```{python}
+import numpy as np
+import pandas as pd
+import pyarrow.feather as feather
+
+np.random.seed(500)
+scooby = feather.read_feather('scooby-do.arrow').astype({'monster_real': 'category'})
+scooby.monster_real
+```
+
+```{python}
+from sklearn import model_selection, preprocessing, svm, pipeline, compose
+
+X_train, X_test, y_train, y_test = model_selection.train_test_split(
+    scooby.iloc[:,1:3],
+    scooby['monster_real'],
+    test_size=0.2
+)
+
+scaler = preprocessing.StandardScaler().fit(X_train)
+svc = svm.LinearSVC().fit(scaler.transform(X_train), y_train)
+
+svc_pipeline = pipeline.Pipeline([('std_scaler', scaler), ('svc', svc)])
+```
+
+## Version and deploy a model
+
+Create a deployable model object:
+
+```{python}
+import vetiver
+
+v = vetiver.VetiverModel(svc_pipeline, "isabel.zimmerman/scooby-doo", ptype_data = X_train)
+```
+
+Version and share the model:
+
+```{python}
+import pins
+# could be board_s3, board_azure, board_folder, etc
+board = pins.board_rsconnect(api_key=api_key, server_url=rsc_url, allow_pickle_read=True) 
+
+vetiver.vetiver_pin_write(board, v)
+```
+
+Document the model: <https://vetiver.rstudio.com/learn-more/model-card.html>
+
+Deploy model as a REST API:
+
+```{python}
+#| eval: false
+api = vetiver.VetiverAPI(v)
+api.run()
+```
+
+```{python}
+#| eval: false
+
+# import rsconnect
+# connect_server = rsconnect.api.RSConnectServer(url = rsc_url, api_key = api_key)
+
+# vetiver.deploy_rsconnect(
+#     connect_server = connect_server, 
+#     board = board, 
+#     pin_name = "isabel.zimmerman/scooby-doo", 
+# )
+```
+
+## Predict from a model
+
+Predict for remote vetiver model:
+
+
+```{python}
+connect_endpoint = vetiver.vetiver_endpoint("https://colorado.rstudio.com/rsc/scooby-python/predict")
+```
+
+```{python}
+import numpy as np
+import pandas as pd
+import vetiver
+new_episodes = pd.DataFrame(
+  {'year_aired': np.random.randint(1970, 2000, size=(5,)),
+  'imdb': np.random.randint(5, 9, size=(5,))}
+)
+new_episodes
+```
+
+```{python}
+response = vetiver.predict(data = new_episodes, endpoint = connect_endpoint)
+response
+```
+
+
+```{python}
+#| eval: false
+# TODO 
+metric_set = [metrics.mean_absolute_error, metrics.mean_squared_error]
+td = timedelta(weeks = 1)
+vetiver.compute_metrics(data = new_episode, 
+                    date_var="date", 
+                    period = td, 
+                    metric_set=metric_set, 
+                    truth="", 
+                    estimate="")
+```
+
+```{python}
+#| eval: false
+# TODO
+board = pins.board_folder(path=".")
+board.pin_write(p, "metrics", type = "csv")
+```
+
+
+```{python}
+#| eval: false
+# TODO
+m = vetiver.plot_metrics(p)
+```
