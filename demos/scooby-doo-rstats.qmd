@@ -2,7 +2,6 @@
 title: "Version, deploy, and monitor your model with vetiver in R"
 ---
 
-
 ```{r}
 #| echo: false
 #| eval: false
@@ -70,10 +69,9 @@ There is a lack 😩 of effective tools (especially open source) to:
 
 The **goal** of vetiver is to provide fluent tooling to **version, deploy, and monitor** a trained model.
 
-
 ## Build a model
 
-Let's build a model to predict which [Scooby Doo episodes](https://github.com/rfordatascience/tidytuesday/blob/master/data/2021/2021-07-13/readme.md) have a _real_ monster and which have a _fake_ monster.
+Let's build a model to predict which [Scooby Doo episodes](https://github.com/rfordatascience/tidytuesday/blob/master/data/2021/2021-07-13/readme.md) have a *real* monster and which have a *fake* monster. 👻
 
 ```{r}
 library(tidyverse)
@@ -124,9 +122,9 @@ pr() %>%
   vetiver_api(v, debug = TRUE)
 ```
 
-- Deploy to Connect: <https://rstudio.github.io/vetiver-r/dev/reference/vetiver_deploy_rsconnect.html>
+-   Deploy to Connect: <https://rstudio.github.io/vetiver-r/dev/reference/vetiver_deploy_rsconnect.html>
 
-- Deploy via Docker (after creating plumber file via `vetiver_write_plumber(model_board, "julia.silge/scooby-doo")`):
+-   Deploy via Docker (after creating plumber file via `vetiver_write_plumber(model_board, "julia.silge/scooby-doo")`):
 
 ```{r}
 #| eval: false
@@ -140,7 +138,7 @@ Build the Docker container (from command line):
 docker build --platform linux/amd64 -t scooby-doo .
 ```
 
-Run the Docker container  (from command line):
+Run the Docker container (from command line):
 
 ```{bash}
 #| eval: false
@@ -153,7 +151,7 @@ Predict for remote vetiver model:
 
 ```{r}
 #| eval: false
-scooby_endpoint <- vetiver_endpoint("http://127.0.0.1:8080/predict")
+scooby_endpoint <- vetiver_endpoint("http://0.0.0.0:8000/predict")
 scooby_endpoint
 ```
 
@@ -179,12 +177,12 @@ scooby_validation <- read_feather("scooby-validation.arrow")
 scooby_validation
 ```
 
-We can compute multiple metrics at once over a certain time aggregation. 
+We can compute multiple metrics at once over a certain time aggregation.
 
-### How does a model use time?
+### How does a model use time? 🤔
 
-- Your model **sometimes** uses date-time quantities as features for prediction (like these Scooby Doo episodes!). 
-- Monitoring **always** involves a date-time quantity, not necessarily as a feature, but as a dimension along which you are monitoring.
+-   Your model **sometimes** uses date-time quantities as features for prediction (like these Scooby Doo episodes!).
+-   Monitoring **always** involves a date-time quantity, not necessarily as a feature, but as a dimension along which you are monitoring.
 
 ```{r}
 scooby_metrics <-
@@ -202,4 +200,3 @@ ggplot(scooby_metrics, aes(.index, .estimate, fill = .metric)) +
 ```
 
 Check out a [more realistic monitoring](https://colorado.rstudio.com/rsc/seattle-housing-dashboard/) example that uses the dashboard template in vetiver!
-
