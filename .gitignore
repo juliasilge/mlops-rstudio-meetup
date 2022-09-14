@@ -3,5 +3,8 @@
 .RData
 .Ruserdata
 .Renviron
+Dockerfile
+plumber.R
+vetiver_renv.lock
 
 /.quarto/
