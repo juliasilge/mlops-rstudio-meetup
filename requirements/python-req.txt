@@ -1,0 +1,7 @@
+vetiver
+scikit-learn
+pins
+pandas
+pyarrow
+numpy
+rsconnect
