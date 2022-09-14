@@ -28,6 +28,15 @@ scooby_raw %>%
   ) %>%
   select(monster_real, year_aired, imdb, title) %>%
   write_feather("scooby-do.arrow")
+
+crossing(
+  year_aired = 2022:2030,
+  imdb = seq(from = 5, to = 9, by = 0.5),
+  monster_real = as.factor(c("fake", "real"))
+) %>%
+  slice_sample(n = 40)  %>%
+  write_feather("scooby-validation.arrow")
+
 ```
 
 ## The MLOps cycle
@@ -71,13 +80,13 @@ scooby
 
 ```{r}
 library(tidymodels)
-tree_spec <- decision_tree(tree_depth = 10, min_n = 2, mode = "classification")
-tree_form <- monster_real ~ year_aired + imdb
-tree_fit <-
-  workflow(tree_form, tree_spec) %>%
+svm_spec <- svm_rbf(mode = "classification")
+scooby_rec <- 
+  recipe(monster_real ~ year_aired + imdb, data = scooby) %>%
+  step_normalize(all_numeric_predictors())
+svm_fit <-
+  workflow(scooby_rec, svm_spec) %>%
   fit(scooby)
-
-tree_fit
 ```
 
 Data scientists use tools they love for these steps, like the tidyverse, pandas, tidymodels, scikit-learn, etc.
@@ -88,7 +97,7 @@ Create a deployable model object:
 
 ```{r}
 library(vetiver)
-v <- vetiver_model(tree_fit, "scooby-doo")
+v <- vetiver_model(svm_fit, "scooby-doo")
 v
 ```
 
@@ -119,6 +128,20 @@ pr() %>%
 vetiver_write_docker(v)
 ```
 
+Build the Docker container (from command line):
+
+```{bash}
+#| eval: false
+docker build --platform linux/amd64 -t scooby-doo .
+```
+
+Run the Docker container  (from command line):
+
+```{bash}
+#| eval: false
+docker run --env-file .Renviron --rm -p 8000:8000 scooby-doo
+```
+
 ## Predict from a model
 
 Predict for remote vetiver model:
@@ -131,8 +154,8 @@ scooby_endpoint
 
 ```{r}
 new_episodes <- tidyr::crossing(
-  year_aired = sample(1970:2000, size = 5),
-  imdb = sample(5:9, size = 5)
+  year_aired = sample(1970:2000, size = 3),
+  imdb = sample(5:9, size = 3)
 )
 new_episodes
 ```
@@ -142,5 +165,10 @@ new_episodes
 predict(scooby_endpoint, new_episodes)
 ```
 
+## Monitor your model
 
+```{r}
+scooby_validation <- read_feather("scooby-validation.arrow")
+scooby_validation
+```
 
