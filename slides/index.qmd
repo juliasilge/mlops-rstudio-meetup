@@ -96,15 +96,40 @@ flowchart LR
 
 ##  {background-image="https://media.giphy.com/media/3ohs4CFLK53EJYWJPy/giphy.gif" background-size="70%"}
 
-##  {background-image="https://media.giphy.com/media/xThtalGAc8K7LzEThS/giphy.gif" background-size="70%"}
-
 # DEMO {background-color="#455469" .white}
+
+## We did it!  {background-image="https://media.giphy.com/media/xThtalGAc8K7LzEThS/giphy.gif" background-size="50%"}
 
 ## MLOps is...
 
 a set of <u>practices</u> to *deploy* and *maintain* machine learning models in production **reliably** and **efficiently**
 
-# Next steps
+## What does vetiver do?
+
+
+::: incremental
+
+- Version
+
+- Deploy
+
+- Monitor
+
+:::
+. . .
+
+your R and Python models
+
+## Where does vetiver work?
+
+::: incremental
+
+-   RStudio's pro products, like [Connect](https://www.rstudio.com/products/connect/)
+
+-   A public or private cloud, using Docker
+
+:::
+
 
 ## Learn more
 
