@@ -107,6 +107,7 @@ v
 Version and share the model:
 
 ```{r}
+#| eval: false
 library(pins)
 model_board <- board_rsconnect() ## also support board_s3(), board_azure(), etc
 model_board %>% vetiver_pin_write(v)
