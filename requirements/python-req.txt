@@ -5,3 +5,4 @@ pandas
 pyarrow
 numpy
 rsconnect
+python-dotenv
