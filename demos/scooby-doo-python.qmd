@@ -50,7 +50,6 @@ import pyarrow.feather as feather
 
 np.random.seed(500)
 scooby = feather.read_feather('scooby-do.arrow').astype({'monster_real': 'category'})
-scooby.monster_real
 ```
 
 ```{python}
@@ -81,6 +80,7 @@ v = vetiver.VetiverModel(svc_pipeline, "isabel.zimmerman/scooby-doo", ptype_data
 Version and share the model:
 
 ```{python}
+#| eval: false
 import pins
 # could be board_s3, board_azure, board_folder, etc
 board = pins.board_rsconnect(api_key=api_key, server_url=rsc_url, allow_pickle_read=True) 
@@ -101,14 +101,14 @@ api.run()
 ```{python}
 #| eval: false
 
-# import rsconnect
-# connect_server = rsconnect.api.RSConnectServer(url = rsc_url, api_key = api_key)
+import rsconnect
+connect_server = rsconnect.api.RSConnectServer(url = rsc_url, api_key = api_key)
 
-# vetiver.deploy_rsconnect(
-#     connect_server = connect_server, 
-#     board = board, 
-#     pin_name = "isabel.zimmerman/scooby-doo", 
-# )
+vetiver.deploy_rsconnect(
+    connect_server = connect_server, 
+    board = board, 
+    pin_name = "isabel.zimmerman/scooby-doo", 
+)
 ```
 
 ## Predict from a model
@@ -117,13 +117,10 @@ Predict for remote vetiver model:
 
 
 ```{python}
-connect_endpoint = vetiver.vetiver_endpoint("https://colorado.rstudio.com/rsc/scooby-python/predict")
+connect_endpoint = vetiver.vetiver_endpoint("https://colorado.rstudio.com/rsc/scooby/predict")
 ```
 
 ```{python}
-import numpy as np
-import pandas as pd
-import vetiver
 new_episodes = pd.DataFrame(
   {'year_aired': np.random.randint(1970, 2000, size=(5,)),
   'imdb': np.random.randint(5, 9, size=(5,))}
@@ -138,25 +135,25 @@ response
 
 
 ```{python}
-#| eval: false
-# TODO 
+from datetime import timedelta
+from sklearn import metrics
+
+scooby_validation = feather.read_feather('scooby-validation.arrow').astype({'monster_real': 'category'})
+scooby_validation["preds"] = v.model.predict(scooby_validation.drop(columns=["monster_real", "date_aired"]))
+
 metric_set = [metrics.mean_absolute_error, metrics.mean_squared_error]
-td = timedelta(weeks = 1)
-vetiver.compute_metrics(data = new_episode, 
-                    date_var="date", 
-                    period = td, 
+
+scooby_metrics = vetiver.compute_metrics(data = scooby_validation, 
+                    date_var="date_aired", 
+                    period = timedelta(weeks = 52), 
                     metric_set=metric_set, 
-                    truth="", 
-                    estimate="")
+                    truth="monster_real", 
+                    estimate="preds")
 ```
 
 ```{python}
-#| eval: false
-# TODO
-board = pins.board_folder(path=".")
-board.pin_write(p, "metrics", type = "csv")
+scooby_validation
 ```
-
 
 ```{python}
 #| eval: false
