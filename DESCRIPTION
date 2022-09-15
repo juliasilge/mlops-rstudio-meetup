@@ -1,21 +1,23 @@
 Package: mlops-rstudio-meetup
 Title: Vetiver MLOps Meetup
 Version: 0.1
-Encoding: UTF-8
 Authors@R: c(
     person("Julia", "Silge", , "julia.silge@rstudio.com", role = c("cre", "aut"),
            comment = c(ORCID = "0000-0002-3671-836X")),
-    person("Isabel", "Zimmerman", , "isabel.zimmerman@rstudio.com", role = c("aut")),
+    person("Isabel", "Zimmerman", , "isabel.zimmerman@rstudio.com", role = "aut"),
     person("RStudio", role = c("cph", "fnd"))
   )
 License: MIT
-Depends: R (>= 3.1.0)
+Depends: 
+    R (>= 3.1.0)
 Imports: 
+    arrow,
+    LiblineaR,
     pins,
-    reticulate,
-    vetiver,
-    tidymodels,
-    rmarkdown,
-    tidyverse,
     plumber,
-    arrow
+    reticulate,
+    rmarkdown,
+    tidymodels,
+    tidyverse,
+    vetiver
+Encoding: UTF-8
