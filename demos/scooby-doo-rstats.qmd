@@ -2,7 +2,6 @@
 title: "Version, deploy, and monitor your model with vetiver in R"
 ---
 
-
 ```{r}
 #| echo: false
 #| eval: false
@@ -10,6 +9,7 @@ title: "Version, deploy, and monitor your model with vetiver in R"
 ## data from TidyTuesday: https://github.com/rfordatascience/tidytuesday/blob/master/data/2021/2021-07-13/readme.md
 
 library(tidyverse)
+theme_set(theme_light())
 library(arrow)
 scooby_raw <- read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-07-13/scoobydoo.csv')
 
@@ -29,12 +29,16 @@ scooby_raw %>%
   select(monster_real, year_aired, imdb, title) %>%
   write_feather("scooby-do.arrow")
 
-crossing(
-  year_aired = 2022:2030,
-  imdb = seq(from = 5, to = 9, by = 0.5),
-  monster_real = as.factor(c("fake", "real"))
+set.seed(2022)
+tibble(
+  date_aired = as.Date("2023-01-01") + 1:1e3,
+  imdb = sample(seq(from = 5, to = 9, by = 0.2), size = 1e3, replace = TRUE),
+  monster_real = sample(as.factor(c("fake", "real")), size = 1e3, replace = TRUE, prob = c(0.8, 0.2))
 ) %>%
-  slice_sample(n = 40)  %>%
+  mutate(year_aired = lubridate::year(date_aired)) %>%
+  slice_sample(n = 100)  %>%
+  arrange(date_aired) %>%
+  select(monster_real, date_aired, year_aired, imdb) %>%
   write_feather("scooby-validation.arrow")
 
 ```
@@ -65,10 +69,9 @@ There is a lack 😩 of effective tools (especially open source) to:
 
 The **goal** of vetiver is to provide fluent tooling to **version, deploy, and monitor** a trained model.
 
-
 ## Build a model
 
-Let's build a model to predict which [Scooby Doo episodes](https://github.com/rfordatascience/tidytuesday/blob/master/data/2021/2021-07-13/readme.md) have a _real_ monster and which have a _fake_ monster.
+Let's build a model to predict which [Scooby Doo episodes](https://github.com/rfordatascience/tidytuesday/blob/master/data/2021/2021-07-13/readme.md) have a *real* monster and which have a *fake* monster. 👻
 
 ```{r}
 library(tidyverse)
@@ -80,7 +83,7 @@ scooby
 
 ```{r}
 library(tidymodels)
-svm_spec <- svm_rbf(mode = "classification")
+svm_spec <- svm_linear(mode = "classification")
 scooby_rec <- 
   recipe(monster_real ~ year_aired + imdb, data = scooby) %>%
   step_normalize(all_numeric_predictors())
@@ -104,6 +107,7 @@ v
 Version and share the model:
 
 ```{r}
+#| eval: false
 library(pins)
 model_board <- board_rsconnect() ## also support board_s3(), board_azure(), etc
 model_board %>% vetiver_pin_write(v)
@@ -119,9 +123,9 @@ pr() %>%
   vetiver_api(v, debug = TRUE)
 ```
 
-- Deploy to Connect: <https://rstudio.github.io/vetiver-r/dev/reference/vetiver_deploy_rsconnect.html>
+-   Deploy to Connect: <https://rstudio.github.io/vetiver-r/dev/reference/vetiver_deploy_rsconnect.html>
 
-- Deploy via Docker (after creating plumber file via `vetiver_write_plumber(model_board, "julia.silge/scooby-doo")`):
+-   Deploy via Docker (after creating plumber file via `vetiver_write_plumber(model_board, "julia.silge/scooby-doo")`):
 
 ```{r}
 #| eval: false
@@ -135,7 +139,7 @@ Build the Docker container (from command line):
 docker build --platform linux/amd64 -t scooby-doo .
 ```
 
-Run the Docker container  (from command line):
+Run the Docker container (from command line):
 
 ```{bash}
 #| eval: false
@@ -148,7 +152,7 @@ Predict for remote vetiver model:
 
 ```{r}
 #| eval: false
-scooby_endpoint <- vetiver_endpoint("http://127.0.0.1:8080/predict")
+scooby_endpoint <- vetiver_endpoint("http://0.0.0.0:8000/predict")
 scooby_endpoint
 ```
 
@@ -167,8 +171,33 @@ predict(scooby_endpoint, new_episodes)
 
 ## Monitor your model
 
+To monitor the statistical properties of your model over time, you will need new data with labels. Let's say that Scooby Doo airs more episodes starting this year:
+
 ```{r}
 scooby_validation <- read_feather("scooby-validation.arrow")
 scooby_validation
 ```
 
+We can compute multiple metrics at once over a certain time aggregation.
+
+### How does a model use time? 🤔
+
+-   Your model **sometimes** uses date-time quantities as features for prediction (like these Scooby Doo episodes!).
+-   Monitoring **always** involves a date-time quantity, not necessarily as a feature, but as a dimension along which you are monitoring.
+
+```{r}
+scooby_metrics <-
+  augment(v, new_data = scooby_validation)  %>%
+  vetiver_compute_metrics(date_aired, "year", monster_real, .pred_class)
+
+scooby_metrics
+```
+
+```{r}
+ggplot(scooby_metrics, aes(.index, .estimate, fill = .metric)) +
+  geom_col(alpha = 0.8, show.legend = FALSE) +
+  facet_wrap(~.metric, scales = "free") +
+  labs(x = NULL, y = NULL)
+```
+
+Check out a [more realistic monitoring](https://colorado.rstudio.com/rsc/seattle-housing-dashboard/) example that uses the dashboard template in vetiver!
