@@ -48,7 +48,7 @@ format:
 
 ## Who are you?
 
-## Who are you?  {background-image="https://media.giphy.com/media/UoYqxidgzAGygqo1Q2/giphy.gif" background-size="50%"}
+## Who are you? {background-image="https://media.giphy.com/media/UoYqxidgzAGygqo1Q2/giphy.gif" background-size="50%"}
 
 # If you develop a model...
 
@@ -60,8 +60,7 @@ you can operationalize that model!
 
 . . .
 
-you likely _should_ operationalize that model!
-
+you likely *should* operationalize that model!
 
 # What is MLOps?
 
@@ -83,8 +82,7 @@ a set of <u>practices</u> to *deploy* and *maintain* machine learning models in 
 
 . . .
 
-
-##  
+## 
 
 ![](https://vetiver.rstudio.com/images/ml_ops_cycle.png){fig-align="center"}
 
@@ -92,35 +90,34 @@ a set of <u>practices</u> to *deploy* and *maintain* machine learning models in 
 
 ## MLOps is...
 
-- _Versioning_
+-   *Versioning*
 
 . . .
 
 managing change in models
 
+## MLOps is...
+
+-   *Versioning*
+-   *Deploying*
+
+. . .
+
+putting models in REST APIs
 
 ## MLOps is...
 
-- _Versioning_
-- _Deploying_
-
-. . . 
-
-putting models in REST APIs 
-
-## MLOps is...
-
-- _Versioning_
-- _Deploying_
-- _Monitoring_
+-   *Versioning*
+-   *Deploying*
+-   *Monitoring*
 
 . . .
 
 tracking model performance
 
-# DEMO {background-color="#455469" .white}
+# DEMO {.white background-color="#455469"}
 
-## We did it!  {background-image="https://media.giphy.com/media/xThtalGAc8K7LzEThS/giphy.gif" background-size="50%"}
+## We did it! {background-image="https://media.giphy.com/media/xThtalGAc8K7LzEThS/giphy.gif" background-size="50%"}
 
 ## MLOps is...
 
@@ -128,35 +125,35 @@ a set of <u>practices</u> to *deploy* and *maintain* machine learning models in 
 
 ## What does vetiver do?
 
-
 ::: incremental
+-   Version
 
-- Version
+-   Deploy
 
-- Deploy
-
-- Monitor
-
+-   Monitor
 :::
+
 . . .
 
 your R and Python models
 
+. . .
+
+::: {.r-fit-text .absolute bottom=100}
+🤔 What kinds of models do you commonly use?
+:::
+
 ## Where does vetiver work?
 
 ::: incremental
-
 -   RStudio's pro products, like [Connect](https://www.rstudio.com/products/connect/)
 
 -   A public or private cloud, using Docker
-
 :::
-
 
 ## Learn more
 
 ::: incremental
-
 -   Documentation at <https://vetiver.rstudio.com/>
 
 -   Isabel's talk from rstudio::conf() 2022 on [Demystifying MLOps](https://www.rstudio.com/conference/2022/talks/demystifying-mlops/) 🍪
@@ -164,5 +161,4 @@ your R and Python models
 -   Julia's recent screencast on [deploying a model with Docker](https://youtu.be/5s7fI4cl2C8)
 
 -   End-to-end demos from RStudio Solution Engineering in [R](https://github.com/sol-eng/bike_predict) and [Python](https://github.com/sol-eng/bike_predict_python)
-
 :::
