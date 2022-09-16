@@ -9,7 +9,7 @@
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.0.35">
+  <meta name="generator" content="quarto-1.0.36">
 
   <meta name="author" content="Julia Silge &amp; Isabel Zimmerman">
   <meta name="dcterms.date" content="2022-09-20">
@@ -316,9 +316,6 @@
       margin-right: 0; 
     }
   </style>
-  <script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
-  <script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
-  <link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -399,23 +396,6 @@
 </section>
 <section id="mlops-is-2" class="slide level2">
 <h2>MLOps is…</h2>
-<div class="fragment">
-<div class="cell" data-reveal="true">
-<div class="cell-output-display">
-<div>
-<p>
-</p><pre class="mermaid" data-tooltip-selector="#mermaid-tooltip-1">flowchart LR
-  A(Version) --&gt; B(Deploy)
-  B --&gt; C(Monitor)
-</pre>
-<div id="mermaid-tooltip-1" class="mermaidTooltip">
-
-</div>
-<p></p>
-</div>
-</div>
-</div>
-</div>
 </section>
 <section id="section-1" class="slide level2">
 <h2></h2>
@@ -424,22 +404,69 @@
 <section id="section-2" class="slide level2" data-background-image="https://media.giphy.com/media/2tM7vca4Dqk4mGKyl5/giphy.gif" data-background-size="70%">
 <h2></h2>
 </section>
-<section id="section-3" class="slide level2" data-background-image="https://media.giphy.com/media/xThtalGAc8K7LzEThS/giphy.gif" data-background-size="70%">
-<h2></h2>
+<section id="mlops-is-3" class="slide level2">
+<h2>MLOps is…</h2>
+<ul>
+<li><em>versioning</em></li>
+</ul>
+<div class="fragment">
+<p>managing change in models</p>
+</div>
+</section>
+<section id="mlops-is-4" class="slide level2">
+<h2>MLOps is…</h2>
+<ul>
+<li><em>versioning</em></li>
+<li><em>deploying</em></li>
+</ul>
+<div class="fragment">
+<p>putting models in REST APIs</p>
+</div>
+</section>
+<section id="mlops-is-5" class="slide level2">
+<h2>MLOps is…</h2>
+<ul>
+<li><em>versioning</em></li>
+<li><em>deploying</em></li>
+<li><em>monitoring</em></li>
+</ul>
+<div class="fragment">
+<p>tracking model performance</p>
+</div>
 </section></section>
 <section>
 <section id="demo" class="title-slide slide level1 white center" data-background-color="#455469">
 <h1>DEMO</h1>
 
 </section>
-<section id="mlops-is-3" class="slide level2">
+<section id="we-did-it" class="slide level2" data-background-image="https://media.giphy.com/media/xThtalGAc8K7LzEThS/giphy.gif" data-background-size="50%">
+<h2>We did it!</h2>
+</section>
+<section id="mlops-is-6" class="slide level2">
 <h2>MLOps is…</h2>
 <p>a set of <u>practices</u> to <em>deploy</em> and <em>maintain</em> machine learning models in production <strong>reliably</strong> and <strong>efficiently</strong></p>
-</section></section>
-<section>
-<section id="next-steps" class="title-slide slide level1 center">
-<h1>Next steps</h1>
-
+</section>
+<section id="what-does-vetiver-do" class="slide level2">
+<h2>What does vetiver do?</h2>
+<div>
+<ul>
+<li class="fragment"><p>Version</p></li>
+<li class="fragment"><p>Deploy</p></li>
+<li class="fragment"><p>Monitor</p></li>
+</ul>
+</div>
+<div class="fragment">
+<p>your R and Python models</p>
+</div>
+</section>
+<section id="where-does-vetiver-work" class="slide level2">
+<h2>Where does vetiver work?</h2>
+<div>
+<ul>
+<li class="fragment"><p>RStudio’s pro products, like <a href="https://www.rstudio.com/products/connect/">Connect</a></p></li>
+<li class="fragment"><p>A public or private cloud, using Docker</p></li>
+</ul>
+</div>
 </section>
 <section id="learn-more" class="slide level2">
 <h2>Learn more</h2>

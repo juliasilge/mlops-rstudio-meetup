@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.35">
+<meta name="generator" content="quarto-1.0.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -206,36 +206,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="build-a-model" class="level2">
 <h2 class="anchored" data-anchor-id="build-a-model">Build a model</h2>
-<p>Let’s build a model to predict which <a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2021/2021-07-13/readme.md">Scooby Doo episodes</a> have a <em>real</em> monster and which have a <em>fake</em> monster.</p>
+<p>Let’s build a model to predict which <a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2021/2021-07-13/readme.md">Scooby Doo episodes</a> have a <em>real</em> monster and which have a <em>fake</em> monster. 👻</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>✔ ggplot2 3.3.6     ✔ purrr   0.3.4
-✔ tibble  3.1.7     ✔ dplyr   1.0.9
-✔ tidyr   1.2.0     ✔ stringr 1.4.0
-✔ readr   2.1.2     ✔ forcats 0.5.1</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+<pre><code>── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
+✔ ggplot2 3.3.6      ✔ purrr   0.3.4 
+✔ tibble  3.1.8      ✔ dplyr   1.0.10
+✔ tidyr   1.2.1      ✔ stringr 1.4.1 
+✔ readr   2.1.2      ✔ forcats 0.5.2 
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(arrow)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(arrow)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
-Attaching package: 'arrow'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following object is masked from 'package:utils':
+Attaching package: 'arrow'
+
+The following object is masked from 'package:utils':
 
     timestamp</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>scooby <span class="ot">&lt;-</span> <span class="fu">read_feather</span>(<span class="st">"scooby-do.arrow"</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>scooby</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>scooby <span class="ot">&lt;-</span> <span class="fu">read_feather</span>(<span class="st">"scooby-do.arrow"</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>scooby</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 501 × 4
    monster_real year_aired  imdb title                    
@@ -254,16 +249,16 @@ Attaching package: 'arrow'</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching packages ────────────────────────────────────── tidymodels 1.0.0 ──</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>✔ broom        1.0.0     ✔ rsample      1.1.0
+<pre><code>✔ broom        1.0.1     ✔ rsample      1.1.0
 ✔ dials        1.0.0     ✔ tune         1.0.0
-✔ infer        1.0.2     ✔ workflows    1.0.0
-✔ modeldata    1.0.0     ✔ workflowsets 1.0.0
-✔ parsnip      1.0.0     ✔ yardstick    1.0.0
+✔ infer        1.0.3     ✔ workflows    1.0.0
+✔ modeldata    1.0.1     ✔ workflowsets 1.0.0
+✔ parsnip      1.0.1     ✔ yardstick    1.1.0
 ✔ recipes      1.0.1     </code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
@@ -274,15 +269,15 @@ Attaching package: 'arrow'</code></pre>
 ✖ dplyr::lag()      masks stats::lag()
 ✖ yardstick::spec() masks readr::spec()
 ✖ recipes::step()   masks stats::step()
-• Use tidymodels_prefer() to resolve common conflicts.</code></pre>
+• Use suppressPackageStartupMessages() to eliminate package startup messages</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>svm_spec <span class="ot">&lt;-</span> <span class="fu">svm_rbf</span>(<span class="at">mode =</span> <span class="st">"classification"</span>)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>scooby_rec <span class="ot">&lt;-</span> </span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">recipe</span>(monster_real <span class="sc">~</span> year_aired <span class="sc">+</span> imdb, <span class="at">data =</span> scooby) <span class="sc">%&gt;%</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_normalize</span>(<span class="fu">all_numeric_predictors</span>())</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>svm_fit <span class="ot">&lt;-</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">workflow</span>(scooby_rec, svm_spec) <span class="sc">%&gt;%</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>(scooby)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>svm_spec <span class="ot">&lt;-</span> <span class="fu">svm_linear</span>(<span class="at">mode =</span> <span class="st">"classification"</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>scooby_rec <span class="ot">&lt;-</span> </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">recipe</span>(monster_real <span class="sc">~</span> year_aired <span class="sc">+</span> imdb, <span class="at">data =</span> scooby) <span class="sc">%&gt;%</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_normalize</span>(<span class="fu">all_numeric_predictors</span>())</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>svm_fit <span class="ot">&lt;-</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">workflow</span>(scooby_rec, svm_spec) <span class="sc">%&gt;%</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>(scooby)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Data scientists use tools they love for these steps, like the tidyverse, pandas, tidymodels, scikit-learn, etc.</p>
 </section>
@@ -290,7 +285,7 @@ Attaching package: 'arrow'</code></pre>
 <h2 class="anchored" data-anchor-id="version-and-deploy-a-model">Version and deploy a model</h2>
 <p>Create a deployable model object:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vetiver)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vetiver)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
 Attaching package: 'vetiver'</code></pre>
@@ -300,36 +295,26 @@ Attaching package: 'vetiver'</code></pre>
 
     load_pkgs</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">vetiver_model</span>(svm_fit, <span class="st">"scooby-doo"</span>)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>v</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">vetiver_model</span>(svm_fit, <span class="st">"scooby-doo"</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>v</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 ── scooby-doo ─ &lt;butchered_workflow&gt; model for deployment 
-A kernlab classification modeling workflow using 2 features</code></pre>
+A LiblineaR classification modeling workflow using 2 features</code></pre>
 </div>
 </div>
 <p>Version and share the model:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pins)</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>model_board <span class="ot">&lt;-</span> <span class="fu">board_rsconnect</span>() <span class="do">## also support board_s3(), board_azure(), etc</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Connecting to RSC 2022.07.0 at &lt;https://colorado.rstudio.com/rsc&gt;</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>model_board <span class="sc">%&gt;%</span> <span class="fu">vetiver_pin_write</span>(v)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Writing to pin 'isabel.zimmerman/scooby-doo'
-
-Create a Model Card for your published model
-• Model Cards provide a framework for transparent, responsible reporting
-• Use the vetiver `.Rmd` template as a place to start</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pins)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>model_board <span class="ot">&lt;-</span> <span class="fu">board_rsconnect</span>() <span class="do">## also support board_s3(), board_azure(), etc</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>model_board <span class="sc">%&gt;%</span> <span class="fu">vetiver_pin_write</span>(v)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Document the model: <a href="https://vetiver.rstudio.com/learn-more/model-card.html" class="uri">https://vetiver.rstudio.com/learn-more/model-card.html</a></p>
 <p>Deploy model as a REST API:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plumber)</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pr</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">vetiver_api</span>(v, <span class="at">debug =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plumber)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pr</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">vetiver_api</span>(v, <span class="at">debug =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Plumber router with 2 endpoints, 4 filters, and 1 sub-router.
 # Use `pr_run()` on this object to start the API.
@@ -338,7 +323,7 @@ Create a Model Card for your published model
 ├──[cookieParser]
 ├──[sharedSecret]
 ├──/logo
-│  │ # Plumber static router serving from directory: /Library/Frameworks/R.framework/Versions/4.1-arm64/Resources/library/vetiver
+│  │ # Plumber static router serving from directory: /home/runner/work/_temp/Library/vetiver
 ├──/ping (GET)
 └──/predict (POST)</code></pre>
 </div>
@@ -348,73 +333,110 @@ Create a Model Card for your published model
 <li><p>Deploy via Docker (after creating plumber file via <code>vetiver_write_plumber(model_board, "julia.silge/scooby-doo")</code>):</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vetiver_write_docker</span>(v)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vetiver_write_docker</span>(v)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Build the Docker container (from command line):</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> build <span class="at">--platform</span> linux/amd64 <span class="at">-t</span> scooby-doo .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> build <span class="at">--platform</span> linux/amd64 <span class="at">-t</span> scooby-doo .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Run the Docker container (from command line):</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--env-file</span> .Renviron <span class="at">--rm</span> <span class="at">-p</span> 8000:8000 scooby-doo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--env-file</span> .Renviron <span class="at">--rm</span> <span class="at">-p</span> 8000:8000 scooby-doo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="predict-from-a-model" class="level2">
 <h2 class="anchored" data-anchor-id="predict-from-a-model">Predict from a model</h2>
 <p>Predict for remote vetiver model:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>scooby_endpoint <span class="ot">&lt;-</span> <span class="fu">vetiver_endpoint</span>(<span class="st">"http://127.0.0.1:8080/predict"</span>)</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>scooby_endpoint</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>scooby_endpoint <span class="ot">&lt;-</span> <span class="fu">vetiver_endpoint</span>(<span class="st">"http://0.0.0.0:8000/predict"</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>scooby_endpoint</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>new_episodes <span class="ot">&lt;-</span> tidyr<span class="sc">::</span><span class="fu">crossing</span>(</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">year_aired =</span> <span class="fu">sample</span>(<span class="dv">1970</span><span class="sc">:</span><span class="dv">2000</span>, <span class="at">size =</span> <span class="dv">3</span>),</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">imdb =</span> <span class="fu">sample</span>(<span class="dv">5</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">size =</span> <span class="dv">3</span>)</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>new_episodes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>new_episodes <span class="ot">&lt;-</span> tidyr<span class="sc">::</span><span class="fu">crossing</span>(</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">year_aired =</span> <span class="fu">sample</span>(<span class="dv">1970</span><span class="sc">:</span><span class="dv">2000</span>, <span class="at">size =</span> <span class="dv">3</span>),</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">imdb =</span> <span class="fu">sample</span>(<span class="dv">5</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">size =</span> <span class="dv">3</span>)</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>new_episodes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 9 × 2
   year_aired  imdb
        &lt;int&gt; &lt;int&gt;
-1       1971     5
-2       1971     6
-3       1971     9
-4       1983     5
-5       1983     6
-6       1983     9
-7       1990     5
-8       1990     6
-9       1990     9</code></pre>
+1       1972     6
+2       1972     8
+3       1972     9
+4       1993     6
+5       1993     8
+6       1993     9
+7       1998     6
+8       1998     8
+9       1998     9</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(scooby_endpoint, new_episodes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(scooby_endpoint, new_episodes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="monitor-your-model" class="level2">
 <h2 class="anchored" data-anchor-id="monitor-your-model">Monitor your model</h2>
+<p>To monitor the statistical properties of your model over time, you will need new data with labels. Let’s say that Scooby Doo airs more episodes starting this year:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>scooby_validation <span class="ot">&lt;-</span> <span class="fu">read_feather</span>(<span class="st">"scooby-validation.arrow"</span>)</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>scooby_validation</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>scooby_validation <span class="ot">&lt;-</span> <span class="fu">read_feather</span>(<span class="st">"scooby-validation.arrow"</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>scooby_validation</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 40 × 3
-   year_aired  imdb monster_real
-        &lt;int&gt; &lt;dbl&gt; &lt;fct&gt;       
- 1       2029   7   fake        
- 2       2027   8.5 fake        
- 3       2027   8   real        
- 4       2027   7.5 fake        
- 5       2028   6   real        
- 6       2025   5   fake        
- 7       2026   7.5 fake        
- 8       2025   6.5 real        
- 9       2028   9   fake        
-10       2028   6.5 fake        
-# … with 30 more rows</code></pre>
+<pre><code># A tibble: 100 × 4
+   monster_real date_aired year_aired  imdb
+   &lt;fct&gt;        &lt;date&gt;          &lt;dbl&gt; &lt;dbl&gt;
+ 1 fake         2023-01-11       2023   6.2
+ 2 fake         2023-02-02       2023   5.2
+ 3 fake         2023-02-11       2023   9  
+ 4 fake         2023-02-17       2023   6.8
+ 5 fake         2023-02-27       2023   5.2
+ 6 fake         2023-03-10       2023   6.4
+ 7 fake         2023-03-21       2023   5.4
+ 8 fake         2023-04-06       2023   8.4
+ 9 fake         2023-05-04       2023   7.4
+10 fake         2023-05-20       2023   7.8
+# … with 90 more rows</code></pre>
 </div>
 </div>
+<p>We can compute multiple metrics at once over a certain time aggregation.</p>
+<section id="how-does-a-model-use-time" class="level3">
+<h3 class="anchored" data-anchor-id="how-does-a-model-use-time">How does a model use time? 🤔</h3>
+<ul>
+<li>Your model <strong>sometimes</strong> uses date-time quantities as features for prediction (like these Scooby Doo episodes!).</li>
+<li>Monitoring <strong>always</strong> involves a date-time quantity, not necessarily as a feature, but as a dimension along which you are monitoring.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>scooby_metrics <span class="ot">&lt;-</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">augment</span>(v, <span class="at">new_data =</span> scooby_validation)  <span class="sc">%&gt;%</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">vetiver_compute_metrics</span>(date_aired, <span class="st">"year"</span>, monster_real, .pred_class)</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>scooby_metrics</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 5
+  .index        .n .metric  .estimator .estimate
+  &lt;date&gt;     &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt;
+1 2023-01-11    38 accuracy binary        0.789 
+2 2023-01-11    38 kap      binary        0.0843
+3 2024-01-02    34 accuracy binary        0.706 
+4 2024-01-02    34 kap      binary       -0.164 
+5 2025-01-25    28 accuracy binary        0.75  
+6 2025-01-25    28 kap      binary        0.372 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(scooby_metrics, <span class="fu">aes</span>(.index, .estimate, <span class="at">fill =</span> .metric)) <span class="sc">+</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>.metric, <span class="at">scales =</span> <span class="st">"free"</span>) <span class="sc">+</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="scooby-doo-rstats_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Check out a <a href="https://colorado.rstudio.com/rsc/seattle-housing-dashboard/">more realistic monitoring</a> example that uses the dashboard template in vetiver!</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
