@@ -70,6 +70,7 @@ you likely _should_ operationalize that model!
 
 ![](https://46eybw2v1nh52oe80d3bi91u-wpengine.netdna-ssl.com/wp-content/uploads/2021/12/Data-and-AI-Landscape-2021-v3-small-1024x530.jpg){fig-align="center"}
 
+##  {background-image="https://media.giphy.com/media/3ohs4CFLK53EJYWJPy/giphy.gif" background-size="70%"}
 
 ## MLOps is...
 
@@ -81,12 +82,6 @@ a set of <u>practices</u> to *deploy* and *maintain* machine learning models in 
 
 . . .
 
-```{mermaid}
-%%| fig-width: 10
-flowchart LR
-  A(Version) --> B(Deploy)
-  B --> C(Monitor)
-```
 
 ##  
 
@@ -94,7 +89,32 @@ flowchart LR
 
 ##  {background-image="https://media.giphy.com/media/2tM7vca4Dqk4mGKyl5/giphy.gif" background-size="70%"}
 
-##  {background-image="https://media.giphy.com/media/3ohs4CFLK53EJYWJPy/giphy.gif" background-size="70%"}
+## MLOps is...
+
+- _versioning_
+
+. . .
+
+managing change in models
+
+## MLOps is...
+
+- _versioning_
+- _deploying_
+
+. . . 
+
+putting models in REST APIs 
+
+## MLOps is...
+
+- _versioning_
+- _deploying_
+- _monitoring_
+
+. . .
+
+tracking model performance
 
 # DEMO {background-color="#455469" .white}
 

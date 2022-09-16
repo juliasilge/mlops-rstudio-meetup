@@ -85,7 +85,7 @@ import pins
 # could be board_s3, board_azure, board_folder, etc
 board = pins.board_rsconnect(api_key=api_key, server_url=rsc_url, allow_pickle_read=True) 
 
-vetiver.vetiver_pin_write(board, v)
+#vetiver.vetiver_pin_write(board, v)
 ```
 
 Document the model: <https://vetiver.rstudio.com/learn-more/model-card.html>
@@ -100,7 +100,6 @@ api.run()
 
 ```{python}
 #| eval: false
-
 import rsconnect
 connect_server = rsconnect.api.RSConnectServer(url = rsc_url, api_key = api_key)
 
@@ -110,6 +109,7 @@ vetiver.deploy_rsconnect(
     pin_name = "isabel.zimmerman/scooby-doo", 
 )
 ```
+
 
 ## Predict from a model
 
@@ -139,9 +139,12 @@ from datetime import timedelta
 from sklearn import metrics
 
 scooby_validation = feather.read_feather('scooby-validation.arrow').astype({'monster_real': 'category'})
+
 scooby_validation["preds"] = v.model.predict(scooby_validation.drop(columns=["monster_real", "date_aired"]))
 
-metric_set = [metrics.mean_absolute_error, metrics.mean_squared_error]
+scooby_validation = scooby_validation.astype({'preds': 'category'})
+
+metric_set = [metrics.accuracy_score, metrics.f1_score]
 
 scooby_metrics = vetiver.compute_metrics(data = scooby_validation, 
                     date_var="date_aired", 
@@ -151,12 +154,8 @@ scooby_metrics = vetiver.compute_metrics(data = scooby_validation,
                     estimate="preds")
 ```
 
-```{python}
-scooby_validation
-```
 
 ```{python}
-#| eval: false
-# TODO
-m = vetiver.plot_metrics(p)
+m = vetiver.plot_metrics(scooby_metrics)
+m.show()
 ```
