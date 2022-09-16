@@ -5,6 +5,7 @@ author: "Julia Silge & Isabel Zimmerman"
 date: "September 20, 2022"
 format:
   revealjs: 
+    multiplex: true
     preview-links: auto
     theme: [simple, custom.scss]
     title-slide-attributes:
@@ -87,20 +88,21 @@ a set of <u>practices</u> to *deploy* and *maintain* machine learning models in 
 
 ![](https://vetiver.rstudio.com/images/ml_ops_cycle.png){fig-align="center"}
 
-##  {background-image="https://media.giphy.com/media/2tM7vca4Dqk4mGKyl5/giphy.gif" background-size="70%"}
+##  {background-image="https://media.giphy.com/media/3ohs4p8V5P6aTHI8Rq/giphy.gif" background-size="70%"}
 
 ## MLOps is...
 
-- _versioning_
+- _Versioning_
 
 . . .
 
 managing change in models
 
+
 ## MLOps is...
 
-- _versioning_
-- _deploying_
+- _Versioning_
+- _Deploying_
 
 . . . 
 
@@ -108,9 +110,9 @@ putting models in REST APIs
 
 ## MLOps is...
 
-- _versioning_
-- _deploying_
-- _monitoring_
+- _Versioning_
+- _Deploying_
+- _Monitoring_
 
 . . .
 
