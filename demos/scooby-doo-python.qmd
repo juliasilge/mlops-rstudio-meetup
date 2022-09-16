@@ -144,7 +144,7 @@ scooby_validation["preds"] = v.model.predict(scooby_validation.drop(columns=["mo
 
 scooby_validation = scooby_validation.astype({'preds': 'category'})
 
-metric_set = [metrics.accuracy_score, metrics.f1_score]
+metric_set = [metrics.accuracy_score]
 
 scooby_metrics = vetiver.compute_metrics(data = scooby_validation, 
                     date_var="date_aired", 
