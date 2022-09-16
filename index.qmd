@@ -11,7 +11,7 @@ Many data scientists understand what goes into training a machine learning model
 
 ## Slides
 
-<p class="text-center"><a class="btn btn-success btn-lg" target="_blank" href="presentation/">{{< fa arrow-up-right-from-square >}} &ensp;View slides in new window</a> <a class="btn btn-success btn-lg" target="_blank" href="presentation/slides.pdf" role="button">{{< fa file-pdf >}} &ensp;Download PDF of all slides</a></p>
+<p class="text-center"><a class="btn btn-success btn-lg" target="_blank" href="slides/">{{< fa arrow-up-right-from-square >}} &ensp;View slides in new window</a> <a class="btn btn-success btn-lg" target="_blank" href="slides/slides.pdf" role="button">{{< fa file-pdf >}} &ensp;Download PDF of all slides</a></p>
 
 <div class="ratio ratio-16x9">
 <iframe class="slide-deck" src="slides/"></iframe>
