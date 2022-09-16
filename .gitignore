@@ -8,3 +8,4 @@ plumber.R
 vetiver_renv.lock
 
 /.quarto/
+_site/
