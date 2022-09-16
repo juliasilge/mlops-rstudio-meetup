@@ -401,13 +401,13 @@
 <h2></h2>
 
 <img data-src="https://vetiver.rstudio.com/images/ml_ops_cycle.png" class="r-stretch quarto-figure-center"></section>
-<section id="section-2" class="slide level2" data-background-image="https://media.giphy.com/media/2tM7vca4Dqk4mGKyl5/giphy.gif" data-background-size="70%">
+<section id="section-2" class="slide level2" data-background-image="https://media.giphy.com/media/3ohs4p8V5P6aTHI8Rq/giphy.gif" data-background-size="70%">
 <h2></h2>
 </section>
 <section id="mlops-is-3" class="slide level2">
 <h2>MLOps is…</h2>
 <ul>
-<li><em>versioning</em></li>
+<li><em>Versioning</em></li>
 </ul>
 <div class="fragment">
 <p>managing change in models</p>
@@ -416,8 +416,8 @@
 <section id="mlops-is-4" class="slide level2">
 <h2>MLOps is…</h2>
 <ul>
-<li><em>versioning</em></li>
-<li><em>deploying</em></li>
+<li><em>Versioning</em></li>
+<li><em>Deploying</em></li>
 </ul>
 <div class="fragment">
 <p>putting models in REST APIs</p>
@@ -426,9 +426,9 @@
 <section id="mlops-is-5" class="slide level2">
 <h2>MLOps is…</h2>
 <ul>
-<li><em>versioning</em></li>
-<li><em>deploying</em></li>
-<li><em>monitoring</em></li>
+<li><em>Versioning</em></li>
+<li><em>Deploying</em></li>
+<li><em>Monitoring</em></li>
 </ul>
 <div class="fragment">
 <p>tracking model performance</p>
@@ -493,6 +493,8 @@
   <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
   <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/multiplex/socket.io.js"></script>
+  <script src="../site_libs/revealjs/plugin/multiplex/multiplex.js"></script>
   <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
@@ -515,6 +517,7 @@
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'multiplex': {"secret":null,"id":"89ea54f999ab0adf","url":"https://reveal-multiplex.glitch.me/"},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -688,7 +691,7 @@
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
 
           RevealMath,
-          RevealNotes,
+          
           RevealSearch,
           RevealZoom
         ]
