@@ -74,6 +74,7 @@ The **goal** of vetiver is to provide fluent tooling to **version, deploy, and m
 Let's build a model to predict which [Scooby Doo episodes](https://github.com/rfordatascience/tidytuesday/blob/master/data/2021/2021-07-13/readme.md) have a *real* monster and which have a *fake* monster. 👻
 
 ```{r}
+#| message: false
 library(tidyverse)
 library(arrow)
 scooby <- read_feather("scooby-do.arrow")
@@ -82,6 +83,7 @@ scooby
 ```
 
 ```{r}
+#| message: false
 library(tidymodels)
 svm_spec <- svm_linear(mode = "classification")
 scooby_rec <- 
@@ -194,6 +196,8 @@ scooby_metrics
 ```
 
 ```{r}
+#| fig.width = 8
+#| fig.height = 5
 ggplot(scooby_metrics, aes(.index, .estimate, fill = .metric)) +
   geom_col(alpha = 0.8, show.legend = FALSE) +
   facet_wrap(~.metric, scales = "free") +
