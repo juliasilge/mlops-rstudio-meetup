@@ -50,6 +50,10 @@ format:
 
 ## Who are you? {background-image="https://media.giphy.com/media/UoYqxidgzAGygqo1Q2/giphy.gif" background-size="50%"}
 
+::: {.r-fit-text .absolute bottom=50}
+🤔 What language does your team use for machine learning?
+:::
+
 # If you develop a model...
 
 . . .
@@ -86,6 +90,10 @@ a set of <u>practices</u> to *deploy* and *maintain* machine learning models in 
 
 ![](https://vetiver.rstudio.com/images/ml_ops_cycle.png){fig-align="center"}
 
+::: {.r-fit-text .absolute bottom=20}
+🤔 What package do you use most for machine learning?
+:::
+
 ##  {background-image="https://media.giphy.com/media/3ohs4p8V5P6aTHI8Rq/giphy.gif" background-size="70%"}
 
 ## MLOps is...
@@ -100,6 +108,10 @@ managing change in models
 
 -   *Versioning*
 -   *Deploying*
+
+::: {.absolute bottom=100}
+🤔 Have you ever deployed a model?
+:::
 
 . . .
 
