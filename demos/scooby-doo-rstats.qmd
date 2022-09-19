@@ -197,7 +197,7 @@ scooby_metrics
 
 ```{r}
 #| fig-width: 8
-#| fig-height = 5
+#| fig-height: 5
 ggplot(scooby_metrics, aes(.index, .estimate, fill = .metric)) +
   geom_col(alpha = 0.8, show.legend = FALSE) +
   facet_wrap(~.metric, scales = "free") +
