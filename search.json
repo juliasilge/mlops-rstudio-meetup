@@ -32,7 +32,7 @@
     "href": "demos/scooby-doo-rstats.html#predict-from-a-model",
     "title": "Version, deploy, and monitor your model with vetiver in R",
     "section": "Predict from a model",
-    "text": "Predict from a model\nPredict for remote vetiver model:\n\nscooby_endpoint <- vetiver_endpoint(\"http://0.0.0.0:8000/predict\")\nscooby_endpoint\n\n\nnew_episodes <- tidyr::crossing(\n  year_aired = sample(1970:2000, size = 3),\n  imdb = sample(5:9, size = 3)\n)\nnew_episodes\n\n# A tibble: 9 × 2\n  year_aired  imdb\n       <int> <int>\n1       1975     5\n2       1975     6\n3       1975     8\n4       1986     5\n5       1986     6\n6       1986     8\n7       1988     5\n8       1988     6\n9       1988     8\n\n\n\npredict(scooby_endpoint, new_episodes)"
+    "text": "Predict from a model\nPredict for remote vetiver model:\n\nscooby_endpoint <- vetiver_endpoint(\"http://0.0.0.0:8000/predict\")\nscooby_endpoint\n\n\nnew_episodes <- tidyr::crossing(\n  year_aired = sample(1970:2000, size = 3),\n  imdb = sample(5:9, size = 3)\n)\nnew_episodes\n\n# A tibble: 9 × 2\n  year_aired  imdb\n       <int> <int>\n1       1976     5\n2       1976     7\n3       1976     8\n4       1978     5\n5       1978     7\n6       1978     8\n7       1995     5\n8       1995     7\n9       1995     8\n\n\n\npredict(scooby_endpoint, new_episodes)"
   },
   {
     "objectID": "demos/scooby-doo-rstats.html#monitor-your-model",
@@ -95,7 +95,7 @@
     "href": "slides/index.html#who-are-you-1",
     "title": "MLOps with vetiver 🏺 in Python and R",
     "section": "Who are you?",
-    "text": "Who are you?"
+    "text": "Who are you?\n\n🤔 What language does your team use for machine learning?"
   },
   {
     "objectID": "slides/index.html#mlops-is",
@@ -119,6 +119,13 @@
     "text": "MLOps is…"
   },
   {
+    "objectID": "slides/index.html#section-1",
+    "href": "slides/index.html#section-1",
+    "title": "MLOps with vetiver 🏺 in Python and R",
+    "section": "",
+    "text": "🤔 What package do you use most for machine learning?"
+  },
+  {
     "objectID": "slides/index.html#mlops-is-3",
     "href": "slides/index.html#mlops-is-3",
     "title": "MLOps with vetiver 🏺 in Python and R",
@@ -130,7 +137,7 @@
     "href": "slides/index.html#mlops-is-4",
     "title": "MLOps with vetiver 🏺 in Python and R",
     "section": "MLOps is…",
-    "text": "MLOps is…\n\nVersioning\nDeploying\n\n\nputting models in REST APIs"
+    "text": "MLOps is…\n\nVersioning\nDeploying\n\n\n🤔 Have you ever deployed a model?\n\n\nputting models in REST APIs"
   },
   {
     "objectID": "slides/index.html#mlops-is-5",
