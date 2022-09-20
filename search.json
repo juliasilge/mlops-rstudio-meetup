@@ -32,7 +32,7 @@
     "href": "demos/scooby-doo-rstats.html#predict-from-a-model",
     "title": "Version, deploy, and monitor your model with vetiver in R",
     "section": "Predict from a model",
-    "text": "Predict from a model\nPredict for remote vetiver model:\n\nscooby_endpoint <- vetiver_endpoint(\"http://0.0.0.0:8000/predict\")\nscooby_endpoint\n\n\nnew_episodes <- tidyr::crossing(\n  year_aired = sample(1970:2000, size = 3),\n  imdb = sample(5:9, size = 3)\n)\nnew_episodes\n\n# A tibble: 9 × 2\n  year_aired  imdb\n       <int> <int>\n1       1976     5\n2       1976     7\n3       1976     8\n4       1978     5\n5       1978     7\n6       1978     8\n7       1995     5\n8       1995     7\n9       1995     8\n\n\n\npredict(scooby_endpoint, new_episodes)"
+    "text": "Predict from a model\nPredict for remote vetiver model:\n\nscooby_endpoint <- vetiver_endpoint(\"http://0.0.0.0:8000/predict\")\nscooby_endpoint\n\n\nnew_episodes <- tidyr::crossing(\n  year_aired = sample(1970:2000, size = 3),\n  imdb = sample(5:9, size = 3)\n)\nnew_episodes\n\n# A tibble: 9 × 2\n  year_aired  imdb\n       <int> <int>\n1       1972     5\n2       1972     6\n3       1972     7\n4       1977     5\n5       1977     6\n6       1977     7\n7       1985     5\n8       1985     6\n9       1985     7\n\n\n\npredict(scooby_endpoint, new_episodes)"
   },
   {
     "objectID": "demos/scooby-doo-rstats.html#monitor-your-model",
@@ -186,7 +186,7 @@
     "href": "index.html",
     "title": "Get started with MLOps and vetiver at the RStudio Enterprise Meetup",
     "section": "",
-    "text": "Many data scientists understand what goes into training a machine learning model, but creating a strategy to deploy and maintain that model can be daunting. In this meetup, learn what MLOps is, what principles can be used to create a practical MLOps strategy, and what kinds of tasks and components are involved. See how to get started with vetiver, a framework for MLOps tasks in R and Python that provides fluent tooling to version, deploy, and monitor your models."
+    "text": "Many data scientists understand what goes into training a machine learning model, but creating a strategy to deploy and maintain that model can be daunting. In this meetup, learn what MLOps is, what principles can be used to create a practical MLOps strategy, and what kinds of tasks and components are involved. See how to get started with vetiver, a framework for MLOps tasks in R and Python that provides fluent tooling to version, deploy, and monitor your models.\nWatch the recording"
   },
   {
     "objectID": "index.html#slides",
