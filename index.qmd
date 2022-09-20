@@ -9,6 +9,8 @@ date: "20 September 2022"
 
 Many data scientists understand what goes into training a machine learning model, but creating a strategy to deploy and maintain that model can be daunting. In this meetup, learn what MLOps is, what principles can be used to create a practical MLOps strategy, and what kinds of tasks and components are involved. See how to get started with vetiver, a framework for MLOps tasks in R and Python that provides fluent tooling to version, deploy, and monitor your models.
 
+<p class="text-center"><a class="btn btn-success btn-lg" target="_blank" href="https://youtu.be/oFQANK13-k4">{{< fa brands youtube >}} &ensp;Watch the recording</a></p>
+
 ## Slides
 
 <p class="text-center"><a class="btn btn-success btn-lg" target="_blank" href="slides/">{{< fa arrow-up-right-from-square >}} &ensp;View slides in new window</a> <a class="btn btn-success btn-lg" target="_blank" href="slides/slides.pdf" role="button">{{< fa file-pdf >}} &ensp;Download PDF of all slides</a></p>
